@@ -1,35 +1,15 @@
-
-# coding: utf-8
-
-# In[47]:
-
-
 import numpy as np
 import pandas as pd
 from keras.utils import np_utils
 np.random.seed(10)
-
-
-# In[48]:
-
-
 from keras.datasets import mnist
 
 
-# In[49]:
-
-
-(X_train_image,y_train_label), (X_test_image,y_test_label)=mnist.load_data()
-
-
-# In[50]:
-
+(X_train_image,y_train_label), \
+(X_test_image,y_test_label)=mnist.load_data()
 
 print('train data=',len(X_train_image))
 print('test data=',len(X_test_image))
-
-
-# In[51]:
 
 
 import matplotlib.pyplot as plt
@@ -38,16 +18,7 @@ def plot_image(image):
     fig.set_size_inches(2,2)
     plt.imshow(image,cmap='binary')
     plt.show()
-
-
-# In[52]:
-
-
 plot_image(X_train_image[1])
-
-
-# In[53]:
-
 
 import matplotlib.pyplot as plt
 def plot_images_labels_prediction(images,labels,
@@ -102,46 +73,13 @@ def show_train_histroy(train_history,train,validation):
     plt.legend(['train','validation'],loc='upper left')
     plt.show()
 
-
-# In[71]:
-
-
 show_train_histroy(train_history,'acc','val_acc')
-
-
-# In[72]:
-
-
 show_train_histroy(train_history,'loss','val_loss')
-
-
-# In[73]:
-
-
 scroes = model.evaluate(x_test_normalize,y_testOneHot)
 
-
-# In[75]:
-
-
-print()
 print('accuracy=',scroes[1])
-
-
-# In[79]:
-
-
 prediction=model.predict_classes(x_test)
-
-
-# In[80]:
-
-
 prediction
-
-
-# In[82]:
-
 
 plot_images_labels_prediction(X_test_image,y_test_label,prediction,idx=340)
 
